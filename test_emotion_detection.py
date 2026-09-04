@@ -9,17 +9,26 @@ class TestEmotionDetector(unittest.TestCase):
 
     def test_dominant_emotions(self):
         """Check the expected dominant emotion for each sample."""
-        cases = {
-            "I am glad this happened": "joy",
-            "I am really mad about this": "anger",
-            "I feel disgusted just hearing about this": "disgust",
-            "I am so sad about this": "sadness",
-            "I am really afraid that this will happen": "fear",
-        }
-        for text, expected in cases.items():
-            with self.subTest(text=text):
-                result = emotion_detector(text)
-                self.assertEqual(result["dominant_emotion"], expected)
+        self.assertEqual(
+            emotion_detector("I am glad this happened")["dominant_emotion"],
+            "joy",
+        )
+        self.assertEqual(
+            emotion_detector("I am really mad about this")["dominant_emotion"],
+            "anger",
+        )
+        self.assertEqual(
+            emotion_detector("I feel disgusted just hearing about this")["dominant_emotion"],
+            "disgust",
+        )
+        self.assertEqual(
+            emotion_detector("I am so sad about this")["dominant_emotion"],
+            "sadness",
+        )
+        self.assertEqual(
+            emotion_detector("I am really afraid that this will happen")["dominant_emotion"],
+            "fear",
+        )
 
 
 if __name__ == "__main__":
